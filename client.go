@@ -69,7 +69,7 @@ func (c *Client) PushValidate(ctx context.Context, payload *Payload, callback Pu
 	if err != nil {
 		return err
 	}
-	resp.Close()
+	defer resp.Close()
 
 	return c.Push(ctx, payload, callback)
 }
