@@ -202,17 +202,18 @@ func NewAndroidNotification() *AndroidNotification {
 
 // AndroidNotification Android 平台上的通知
 type AndroidNotification struct {
-	Alert      string                 `json:"alert"`
-	Title      string                 `json:"title,omitempty"`
-	BuilderID  int                    `json:"builder_id,omitempty"`
-	Priority   int                    `json:"priority,omitempty"`
-	Category   string                 `json:"category,omitempty"`
-	Style      int                    `json:"style,omitempty"`
-	AlertType  int                    `json:"alert_type,omitempty"`
-	BigText    string                 `json:"big_text,omitempty"`
-	Inbox      map[string]interface{} `json:"inbox,omitempty"`
-	BigPicPath string                 `json:"big_pic_path,omitempty"`
-	Extras     map[string]interface{} `json:"extras,omitempty"`
+	Alert       string                 `json:"alert"`
+	Title       string                 `json:"title,omitempty"`
+	BuilderID   int                    `json:"builder_id,omitempty"`
+	Priority    int                    `json:"priority,omitempty"`
+	Category    string                 `json:"category,omitempty"`
+	Style       int                    `json:"style,omitempty"`
+	AlertType   int                    `json:"alert_type,omitempty"`
+	BigText     string                 `json:"big_text,omitempty"`
+	Inbox       map[string]interface{} `json:"inbox,omitempty"`
+	BigPicPath  string                 `json:"big_pic_path,omitempty"`
+	BadgeAddNum int                    `json:"badge_add_num,omitempty"`
+	Extras      map[string]interface{} `json:"extras,omitempty"`
 }
 
 // SetAlert 通知内容
@@ -272,6 +273,12 @@ func (n *AndroidNotification) SetInbox(inbox map[string]interface{}) *AndroidNot
 // SetBigPicPath 大图片通知栏样式
 func (n *AndroidNotification) SetBigPicPath(bigPicPath string) *AndroidNotification {
 	n.BigPicPath = bigPicPath
+	return n
+}
+
+// SetBadgeAddNum 角标数字，取值范围1-99
+func (n *AndroidNotification) SetBadgeAddNum(badgeAddNum int) *AndroidNotification {
+	n.BadgeAddNum = badgeAddNum
 	return n
 }
 

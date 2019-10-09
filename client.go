@@ -3,7 +3,6 @@ package jpush
 import (
 	"context"
 	"encoding/json"
-	"net/http"
 	"sync"
 
 	"github.com/LyricTian/queue"
@@ -53,25 +52,6 @@ func (c *Client) GetPushID(ctx context.Context) (string, error) {
 // GetScheduleID 获取定时ID
 func (c *Client) GetScheduleID(ctx context.Context) (string, error) {
 	return c.cidClient.GetScheduleID(ctx)
-}
-
-// Push 消息推送
-func (c *Client) Push(ctx context.Context, payload *Payload, callback PushResultHandle) error {
-	job := c.jobPool.Get().(*pushJob)
-	job.Reset(ctx, payload, callback)
-	c.queue.Push(job)
-	return nil
-}
-
-// PushValidate 先校验，再推送
-func (c *Client) PushValidate(ctx context.Context, payload *Payload, callback PushResultHandle) error {
-	resp, err := pushRequest(ctx, c.opts, "/v3/push/validate", http.MethodPost, payload.Reader())
-	if err != nil {
-		return err
-	}
-	defer resp.Close()
-
-	return c.Push(ctx, payload, callback)
 }
 
 // PushResult 推送响应结果
