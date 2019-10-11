@@ -1,6 +1,6 @@
-# JPush Golang Client
+[文档查看](https://jeffreybool.github.io/jpush-go/)
 
-[查看](https://jeffreybool.github.io/jpush-go/)
+# JPush Golang Client
 
 [![Build][Build-Status-Image]][Build-Status-Url] [![Codecov][codecov-image]][codecov-url] [![ReportCard][reportcard-image]][reportcard-url] [![GoDoc][godoc-image]][godoc-url] [![License][license-image]][license-url]
 
